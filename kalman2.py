@@ -18,7 +18,7 @@ class ScanState:
 
 class NonRepetitiveLiDARProcessor:
     def __init__(self, 
-                 adaptive_threshold: float = 0.5,
+                 adaptive_threshold: float = 0.9,
                  feature_weight: float = 0.3,
                  geometric_weight: float = 0.4,
                  temporal_weight: float = 0.3):
@@ -282,7 +282,7 @@ class NonRepetitiveLiDARProcessor:
             (predicted_pose, confidence)
         """
         if len(self.scan_states) < 3:
-            return None, 0.0
+            return None, 5.0
         
         # Use last 3-5 poses for geometric consistency
         recent_states = self.scan_states[-min(5, len(self.scan_states)):]
@@ -996,7 +996,7 @@ def main_non_repetitive_lidar():
     """Example usage for non-repetitive LiDAR processing"""
     
     # Configure paths
-    observation_folder = "/home/robotics/testdata/927a"  # Replace with your path
+    observation_folder = "/home/robotics/testdata/BIA6"  # Replace with your path
     
     print("=== Non-Repetitive LiDAR Scan Processing ===")
     print("Features:")
@@ -1005,6 +1005,7 @@ def main_non_repetitive_lidar():
     print("- Geometric consistency checking")
     print("- Automatic strategy adaptation")
     print("- Handles unpredictable motion patterns")
+    print("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////")
     
     try:
         # Process the scans

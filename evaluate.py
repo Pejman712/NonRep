@@ -89,11 +89,11 @@ for prefix, files in grouped.items():
     # Plot
     plt.figure(figsize=(8, 6))
     if avg_df is not None:
-        plt.plot(avg_df['x'], avg_df['y'], label="Average (a-e)", linewidth=2)
-    if df_r is not None:
-        plt.plot(df_r['x'], df_r['y'], label="r", linestyle='--')
+        plt.plot(avg_df['x'], avg_df['y'], label="Our Method", linewidth=2)
+    #if df_r is not None:
+    #    plt.plot(df_r['x'], df_r['y'], label="r", linestyle='--')
     if df_rr is not None:
-        plt.plot(df_rr['x'], df_rr['y'], label="rr", linestyle='--')
+        plt.plot(df_rr['x'], df_rr['y'], label="Single scan GICP", linestyle='--')
     if df_gt_interp is not None:
         plt.plot(df_gt_interp['x'], df_gt_interp['y'], label="GT", color='black', linewidth=2)
 
@@ -104,7 +104,7 @@ for prefix, files in grouped.items():
     plt.grid(True)
     plt.legend()
     plt.tight_layout()
-    plt.savefig(os.path.join(folder_path, f"{prefix}_trajectory_plot.png"))
+    plt.savefig(os.path.join(folder_path, f"{prefix}_trajectory_plot.png"),dpi=900)
     plt.show()
 
     # Save results

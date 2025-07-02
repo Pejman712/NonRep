@@ -183,13 +183,14 @@ def mapping(pcd_files, output_dir="output"):
 
 
 def main():
-    pcd_dir = "/home/robotics/testdata/Dumpareaa"  # Change this path as needed
+    pcd_dir = "/home/robotics/testdata/BA80a"  # Change this path as needed
     pcd_files = sorted([os.path.join(pcd_dir, f) for f in os.listdir(pcd_dir) if f.endswith('.pcd')])
     if len(pcd_files) < 2:
         print("Need at least two PCD files for mapping")
         return
     print(f"Found {len(pcd_files)} PCD files")
     global_map, trajectory = mapping(pcd_files)
+    global_map.pcd.colors = o3d.utility.Vector3dVector()
     o3d.visualization.draw_geometries([global_map.pcd])
 
 
